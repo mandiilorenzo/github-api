@@ -114,6 +114,10 @@ main {
     line-height: 23px;
 }
 
+.container .profile-data .info p i {
+    margin: 10px 10px 0 0;
+}
+
 /* REPOSITORIES */
 
 .container .profile-data .repositories h2 {
@@ -145,6 +149,3 @@ main {
 .container .profile-data.hide {
     display: none;
 }
-
-
-
