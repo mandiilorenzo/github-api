@@ -146,6 +146,21 @@ main {
     color: #fff
 }
 
+.container .profile-data .repositories ul li span {
+    background-color: hotpink;
+    color: #fff;
+    margin-left: 5px;
+    padding-inline: 8px;
+    padding-block: 8px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.container .profile-data .repositories ul li span i {
+    font-size: 15px;
+    margin-right: 5px;
+}
+
 .container .profile-data.hide {
     display: none;
 }
