@@ -13,10 +13,10 @@ const screen = {
 
         let repositoriesItens = ''
         user.repositories.forEach(repo => repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}
-            <span><i class="fas fa-code-branch"></i>${repo.forks_count}</span>
+            <div class="itens-repositories"><span><i class="fas fa-code-branch"></i>${repo.forks_count}</span>
             <span><i class="fas fa-star"></i>${repo.stargazers_count}</span>
             <span><i class="fas fa-eye"></i>${repo.watchers_count}</span>
-            <span>${repo.language}</span>
+            <span>${repo.language}</span></div>
             </a></li>`)
 
         if (user.repositories.length > 0) {
@@ -26,10 +26,26 @@ const screen = {
             </div>`
         }
 
-        let eventsItens = ''
-        user.events.forEach(event => eventsItens += `<div>${event.type}`
-            
-        )
+        if(user.eventos.lenght > 0) {
+            this.userProfile.innerHTML += '<div class="events"><h2>Eventos</h2></div>'
+        }
+
+        const events = user.eventos.filter((event) => {
+            return event.type === 'PushEvent' || event.type === 'CreateEvent'
+        })
+
+        if(events.length > 0) {
+            this.userProfile.innerHTML += '<div class="events"><h2>Eventos</h2></div>'
+        }
+        
+        events.forEach((event) => { 
+            if(event.type === 'PushEvent'){
+                this.userProfile.innerHTML += `<div class="events">
+                <h3>${event.repo.name}</h3> - ${event.payload.commits[0].message}</div>`
+            } if(event.type === 'CreateEvent'){
+                this.userProfile.innerHTML += `<div class="events"><h3>${event.repo.name}</h3><p>Sem mensagem de commit</p></div>`
+            }
+        })
     },
     
     renderNotFound(){

@@ -21,6 +21,9 @@
     .container header #btn-search {
         width: 100%;
     }
+    .container .profile-data .repositories .itens-repositories {
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 425px) {
